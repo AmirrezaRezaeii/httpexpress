@@ -1,14 +1,21 @@
 const { http } = require("msw");
-const { createServer } = require("@mswjs/http-middleware");
+const { createMiddleware } = require("@mswjs/http-middleware");
 
-const httpServer = createServer(
-  http.get("/", (req, res, ctx) => {
-    return res(ctx.text("Hello world"));
-  })
-);
+const express = require("express");
+const app = express();
 
-httpServer.get("/", (req, res, ctx) => {
-  return res(ctx.text("salam"));
+app.get("/", (req, res, ctx) => {
+  return res.send("Hello World!");
 });
 
-httpServer.listen(3001);
+app.use(
+  createMiddleware(
+    http.get("/", (req, res, ctx) => {
+      return res(ctx.text("salam"));
+    })
+  )
+);
+
+app.listen(3001, () => {
+  console.log("working");
+});

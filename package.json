@@ -1,0 +1,16 @@
+{
+  "name": "httpexpress",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@mswjs/http-middleware": "^0.10.2",
+    "express": "^4.21.2",
+    "msw": "^2.7.0"
+  }
+}
